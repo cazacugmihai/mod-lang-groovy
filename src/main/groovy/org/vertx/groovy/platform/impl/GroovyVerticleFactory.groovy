@@ -27,6 +27,8 @@ import org.vertx.groovy.platform.Container
 import org.vertx.groovy.platform.Verticle
 
 import java.lang.reflect.Method
+import org.codehaus.groovy.control.CompilerConfiguration
+
 
 /**
  * @author <a href="http://tfox.org">Tim Fox</a>
@@ -44,7 +46,13 @@ public class GroovyVerticleFactory implements VerticleFactory {
     this.vertx = vertx
     this.container = container
     this.cl = cl
-    this.gcl = new GroovyClassLoader(cl)
+
+	CompilerConfiguration.DEFAULT.optimizationOptions.put("indy", true)
+	CompilerConfiguration configuration = new CompilerConfiguration()
+	configuration.optimizationOptions.put("int", false)
+	configuration.optimizationOptions.put("indy", true)
+
+    this.gcl = new GroovyClassLoader(cl, configuration)
   }
 
   public JVerticle createVerticle(String main) throws Exception {

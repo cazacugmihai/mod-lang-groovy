@@ -40,7 +40,7 @@ class HttpServerRequest implements ReadStream {
   private final JHttpServerRequest jRequest
   private final HttpServerResponse wrappedResponse
 
-  protected HttpServerRequest(JHttpServerRequest jRequest) {
+  HttpServerRequest(JHttpServerRequest jRequest) {
     this.jRequest = jRequest
     this.wrappedResponse = new HttpServerResponse(jRequest.response)
   }

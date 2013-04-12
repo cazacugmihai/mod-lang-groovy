@@ -42,7 +42,7 @@ class HttpServerResponse implements WriteStream {
 
   private final org.vertx.java.core.http.HttpServerResponse jResponse
 
-  protected HttpServerResponse(org.vertx.java.core.http.HttpServerResponse jResponse) {
+  HttpServerResponse(org.vertx.java.core.http.HttpServerResponse jResponse) {
     this.jResponse = jResponse
   }
 
